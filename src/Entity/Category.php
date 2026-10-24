@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -29,6 +29,9 @@ class Category
      */
     #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'category')]
     private Collection $courses;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
 
     public function __construct()
     {
@@ -102,6 +105,18 @@ class Category
                 $course->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
