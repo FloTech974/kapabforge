@@ -3,10 +3,28 @@
 {% block title %}{{parent()}}Accueil{% endblock %}
 
 {% block body %}
+{# Hero #}
+    <section class="hero min-h-[60vh] bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-xl">
+                <h1 class="text-5xl font-bold">Bienvenue sur KapabForge</h1>
+                <p class="py-6">
+                    Développez vos compétences grâce à nos formations et suivez nos dernières actualités.
+                </p>
+                <a href="#" class="btn btn-primary">Voir les formations</a>
+            </div>
+        </div>
+    </section>
 
-<div>
-    <h1>Hello ! Yo</h1>
+    {# Dernières formations (à remplir quand l'entité Formation existera) #}
+    <section class="container mx-auto px-4 py-10">
+        <h2 class="text-3xl font-bold mb-6">Dernières formations</h2>
+        <p class="text-base-content/70">Bientôt disponible.</p>
+    </section>
 
-    <p>Test</p>
-</div>
+    {# Dernières actualités (à remplir quand l'entité Actualite existera) #}
+    <section class="container mx-auto px-4 py-10">
+        <h2 class="text-3xl font-bold mb-6">Dernières actualités</h2>
+        <p class="text-base-content/70">Bientôt disponible.</p>
+    </section>
 {% endblock %}
