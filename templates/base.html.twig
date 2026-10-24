@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme=""cupcake">
+<html lang="fr" data-theme="cupcake">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}KapabForge - {% endblock %}</title>
@@ -14,7 +14,7 @@
 
     <body>
         {% include "partials/navbar.html.twig" %}
-        <main>
+        <main class="flex-1 w-full">
             {% block body %}{% endblock %}
         </main>
         {% include "partials/footer.html.twig" %}
