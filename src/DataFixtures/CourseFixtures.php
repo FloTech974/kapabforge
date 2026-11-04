@@ -28,7 +28,7 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
         // Créer et persister les cours
         for ($i = 1; $i <= 10; $i++) {
             $course = new Course()
-                ->setName($faker->words(rand(2,4), true))
+                ->setName($faker->unique()->words(rand(2,4), true))
                 ->setShortDescription($faker->sentence(rand(10, 20)))
                 ->setDescription($faker->paragraphs(rand(3, 7), true))
                 ->setPrice((string)$faker->randomFloat(2, 0, 100))
@@ -41,7 +41,7 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
                 ->setIsPublished($faker->boolean(80))
                 ->setCategory($faker->randomElement($categories))
                 ->setLevel($faker->randomElement($levels));
-            $course->setSlug($this->slugger->slug($course->getName() . '-' . $i)->lower());    
+            $course->setSlug($this->slugger->slug($course->getName())->lower());    
             $manager->persist($course);
         }
         $manager->flush();
