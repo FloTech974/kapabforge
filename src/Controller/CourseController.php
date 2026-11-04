@@ -38,4 +38,14 @@ final class CourseController extends AbstractController
             'course' => $course,
         ]);
     }
+
+    #[Route('/courses/{slug}', name: 'app_courses_cat')]
+    public function courseCat(string $slug, CourseRepository $repository): Response
+    {
+        $courses = $repository->findByCategory($slug);
+
+        return $this->render('course/courses.html.twig', [
+            'courses' => $courses,
+        ]);
+    }
 }
