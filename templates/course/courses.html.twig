@@ -7,8 +7,8 @@
     <h1 class="text-3xl font-bold mb-6">Nos Formations</h1>
 
     {{ render(controller(
-    'App\\Controller\\CategoryController::categories',
-    {current: app.request.attributes.get('slug')}
+        'App\\Controller\\CategoryController::categories',
+        {current: app.request.attributes.get('slug')}
     )) }}
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
