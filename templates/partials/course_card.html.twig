@@ -13,7 +13,7 @@
         <p>{{ course.shortDescription }}</p>
         <div class="card-actions justify-between items-center">
             <span class="text-lg font-bold">{{ course.price }} €</span>
-            <a href="#" class="btn btn-primary btn-sm">Voir la formation</a>
+            <a href="{{ path('app_course', { slug: course.slug }) }}" class="btn btn-primary btn-sm">Voir la formation</a>
         </div>
     </div>
 </div>

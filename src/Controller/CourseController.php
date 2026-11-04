@@ -21,4 +21,21 @@ final class CourseController extends AbstractController
             'courses' => $courses,
         ]);
     }
+
+    #[Route('/course/{slug}', name: 'app_course')]
+    public function course(string $slug, CourseRepository $repository): Response
+    {
+        $course = $repository->findOneBy([
+            'slug' => $slug,
+            'isPublished' => true,
+        ]);
+
+        if (!$course) {
+            throw $this->createNotFoundException('Formation non trouvée');
+        }
+
+        return $this->render('course/course.html.twig', [
+            'course' => $course,
+        ]);
+    }
 }
