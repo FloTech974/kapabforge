@@ -10,7 +10,7 @@ final class CategoryController extends AbstractController
 {
     public function categories(CategoryRepository $repository, ?string $current = null): Response
     {
-        $categories = $repository->findBy([], ['name' => 'ASC']);
+        $categories = $repository->findBy([], ['name' => 'DESC']);
 
         return $this->render('partials/categories.html.twig', [
             'categories' => $categories,
