@@ -11,7 +11,7 @@
                 <p class="py-6">
                     Développez vos compétences grâce à nos formations et suivez nos dernières actualités.
                 </p>
-                <a href="#" class="btn btn-primary">Voir les formations</a>
+                <a href="{{ path('app_courses') }}" class="btn btn-primary">Voir les formations</a>
             </div>
         </div>
     </section>
@@ -19,7 +19,14 @@
     {# Dernières formations (à remplir quand l'entité Formation existera) #}
     <section class="container mx-auto px-4 py-10">
         <h2 class="text-3xl font-bold mb-6">Dernières formations</h2>
-        <p class="text-base-content/70">Bientôt disponible.</p>
+        
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {% for course in courses %}
+                {% include 'partials/course_card.html.twig' with {'course': course}%}
+            {% else %}
+                <p>Aucune formation disponible pour le moment.</p>
+            {% endfor %}
+        </div>
     </section>
 
     {# Dernières actualités (à remplir quand l'entité Actualite existera) #}
