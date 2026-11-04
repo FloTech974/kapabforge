@@ -35,7 +35,7 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
                 ->setDuration($faker->numberBetween(1, 20))
                 ->setLessonCount($faker->numberBetween(1, 50))
                 ->setSoftware($faker->randomElement(['Unity', 'Godot', 'Unreal Engine'])) 
-                ->setImage($i . '.png')
+                ->setImage($i . '.jpg')
                 ->setCreatedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 year', '-1 month')))
                 ->setUpdatedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 month', 'now')))
                 ->setIsPublished($faker->boolean(80))
