@@ -31,17 +31,17 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
                 ->setName($faker->words(rand(2,4), true))
                 ->setShortDescription($faker->sentence(rand(10, 20)))
                 ->setDescription($faker->paragraphs(rand(3, 7), true))
-                ->setPrice($faker->randomFloat(2, 0, 100))
+                ->setPrice((string)$faker->randomFloat(2, 0, 100))
                 ->setDuration($faker->numberBetween(1, 20))
                 ->setLessonCount($faker->numberBetween(1, 50))
                 ->setSoftware($faker->randomElement(['Unity', 'Godot', 'Unreal Engine'])) 
-                // ->setImage($i . '.jpg')
+                ->setImage($i . '.jpg')
                 ->setCreatedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 year', '-1 month')))
                 ->setUpdatedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 month', 'now')))
                 ->setIsPublished($faker->boolean(80))
                 ->setCategory($faker->randomElement($categories))
                 ->setLevel($faker->randomElement($levels));
-            $course->setSlug($this->slugger->slug($course->getName())->lower());    
+            $course->setSlug($this->slugger->slug($course->getName() . '-' . $i)->lower());    
             $manager->persist($course);
         }
         $manager->flush();
