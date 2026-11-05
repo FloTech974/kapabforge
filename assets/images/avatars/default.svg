@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0" stop-color="#2a2140"/>
+      <stop offset="1" stop-color="#0f0d18"/>
+    </radialGradient>
+    <linearGradient id="ember" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffc861"/>
+      <stop offset="1" stop-color="#ff5e1a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="100%" r="60%">
+      <stop offset="0" stop-color="#ff6a1f" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#ff6a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect y="256" width="512" height="256" fill="url(#glow)"/>
+  <!-- étincelles pixel (forge + jeu vidéo) -->
+  <g fill="#ffb347">
+    <rect x="118" y="132" width="14" height="14" opacity=".9"/>
+    <rect x="96" y="186" width="10" height="10" opacity=".6"/>
+    <rect x="140" y="88" width="8" height="8" opacity=".5"/>
+    <rect x="382" y="120" width="14" height="14" opacity=".9"/>
+    <rect x="408" y="176" width="10" height="10" opacity=".6"/>
+    <rect x="364" y="80" width="8" height="8" opacity=".5"/>
+  </g>
+  <!-- silhouette -->
+  <circle cx="256" cy="206" r="84" fill="url(#ember)"/>
+  <path d="M96 512 C96 380 168 318 256 318 C344 318 416 380 416 512 Z" fill="url(#ember)"/>
+  <!-- visière / bandeau pixel -->
+  <rect x="200" y="192" width="112" height="22" rx="4" fill="#1a1528" opacity=".85"/>
+  <rect x="214" y="198" width="10" height="10" fill="#ffc861"/>
+  <rect x="288" y="198" width="10" height="10" fill="#ffc861"/>
+</svg>
