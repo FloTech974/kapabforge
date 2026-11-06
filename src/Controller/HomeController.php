@@ -12,12 +12,13 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(CourseRepository $courseRepository): Response
     {
+        $courses = $courseRepository->findBy(
+                    ['isPublished' => true],
+                    ['createdAt' => 'DESC'],
+                    4
+                );
         return $this->render('home/index.html.twig', [
-            'courses' => $courseRepository->findBy(
-                ['isPublished' => true],
-                ['createdAt' => 'DESC'],
-                4
-            ),
-        ]);
+            'courses' => $courses,
+        ]);        
     }
 }

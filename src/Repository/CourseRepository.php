@@ -26,7 +26,7 @@ class CourseRepository extends ServiceEntityRepository
            ->andWhere('cat.slug = :slug')
            ->andWhere('c.isPublished = true')
            ->setParameter('slug', $slug)
-           ->orderBy('c.id', 'DESC')
+           ->orderBy('c.createdAt', 'DESC')
            ->getQuery()
            ->getResult();
    }

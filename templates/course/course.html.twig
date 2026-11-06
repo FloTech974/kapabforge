@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }}{{ course.name }}{% endblock %}
 
 {% block body %}
-<section class="container mx-auto px-4 py-10">
+<section class="container px-4 py-10 max-w-6xl mx-auto">
 
     {# Fil d'Ariane #}
     <div class="breadcrumbs text-sm mb-4">
@@ -64,7 +64,6 @@
                 </a>
             {% endif %}
         </div>
-
     </div>
 </section>
 {% endblock %}
