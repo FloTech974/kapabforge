@@ -1,13 +1,13 @@
-<div class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in">
+<div class="card card-sm bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in">
     <figure>
         <img src="{{ asset('images/courses/' ~ course.image) }}"
              alt="{{ course.name }}"
-             class="aspect-[4/3] w-full object-cover"/>
+             class="aspect-4/3 w-full object-cover"/>
     </figure>
     <div class="card-body">
-        <div class="flex gap-2">
-            <span class="badge badge-primary">{{ course.category.name }}</span>
-            <span class="badge badge-outline">{{ course.level.name }}</span>
+        <div class="flex flex-wrap gap-2">
+            <span class="badge badge-primary h-auto py-0.5">{{ course.category.name }}</span>
+            <span class="badge badge-outline h-auto py-0.5">{{ course.level.name }}</span>
         </div>
         <h2 class="card-title">{{ course.name }}</h2>
         <p>{{ course.shortDescription }}</p>
