@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }}Login{% endblock %}
+{% block title %}{{ parent() }}Connexion{% endblock %}
 
 {% block body %}
 <section class="container flex items-center justify-center px-4 py-10 mx-auto">
     <form method="post">
-       
         <h1 class="text-2xl font-bold mb-6">Se connecter</h1>
 
         {% if error %}
@@ -21,8 +20,8 @@
         <fieldset class="fieldset flex flex-col bg-base-200 border-base-300 rounded-box w-md border p-4">
             <legend class="fieldset-legend">Vos identifiants</legend>
 
-            <label for="email" class="label">Email</label>
-            <input type="email" value="{{ last_username }}" name="_username" id="email" class="input w-full" autocomplete="email" required autofocus />
+            <label for="username" class="label">Email</label>
+            <input type="email" value="{{ last_username }}" name="_username" id="username" class="input w-full" autocomplete="email" required autofocus />
 
             <label for="password" class="label">Mot de passe</label>
             <input type="password" name="_password" id="password" class="input w-full" autocomplete="current-password" required />
