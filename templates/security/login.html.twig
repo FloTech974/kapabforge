@@ -1,25 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ parent() }}Login{% endblock %}
 
 {% block body %}
+<section class="container flex items-center justify-center px-4 py-10 mx-auto">
     <form method="post">
+       
+        <h1 class="text-2xl font-bold mb-6">Se connecter</h1>
+
         {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class="alert alert-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
         {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
+            <div class="alert alert-info mb-3">
+                Vous êtes identifié comme {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Se déconnecter</a>
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <fieldset class="fieldset flex flex-col bg-base-200 border-base-300 rounded-box w-md border p-4">
+            <legend class="fieldset-legend">Vos identifiants</legend>
+
+            <label for="email" class="label">Email</label>
+            <input type="email" value="{{ last_username }}" name="_username" id="email" class="input w-full" autocomplete="email" required autofocus />
+
+            <label for="password" class="label">Mot de passe</label>
+            <input type="password" name="_password" id="password" class="input w-full" autocomplete="current-password" required />
+            <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}"> 
+
+            <button class="btn btn-neutral self-center mt-4 w-50" type="submit">Se connecter</button>
+        </fieldset>
+
+        {# <h1 class="text-2xl font-bold mb-6">Se connecter</h1>
         <label for="username">Email</label>
         <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
         <label for="password">Password</label>
         <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}"> #}
 
         {#
             Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -31,8 +48,6 @@
             </div>
         #}
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
     </form>
+</section>
 {% endblock %}
