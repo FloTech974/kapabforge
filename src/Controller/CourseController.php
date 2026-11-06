@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\CourseRepository;
+use App\Repository\CategoryRepository;
 
 final class CourseController extends AbstractController
 {
@@ -40,12 +41,19 @@ final class CourseController extends AbstractController
     }
 
     #[Route('/courses/{slug}', name: 'app_courses_cat')]
-    public function courseCat(string $slug, CourseRepository $repository): Response
+    public function courseCat(string $slug, CourseRepository $repository, CategoryRepository $categoryRepository): Response
     {
+        $category = $categoryRepository->findOneBy(['slug' => $slug]);
+
+        if (!$category) {
+            throw $this->createNotFoundException('Catégorie non trouvée');
+        }
+
         $courses = $repository->findByCategory($slug);
 
         return $this->render('course/courses.html.twig', [
             'courses' => $courses,
+            'category' => $category,
         ]);
     }
 }
