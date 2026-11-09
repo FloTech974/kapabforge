@@ -10,6 +10,7 @@ use App\Entity\User;
 
 class UserFixtures extends Fixture
 {
+    private array $genders = ['male', 'female', 'other', null];
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
     {
 
@@ -21,7 +22,8 @@ class UserFixtures extends Fixture
 
         for ($i = 0; $i < 20; $i++) {
             $user = new User();
-            $user->setFirstName($faker->firstName());
+            $gender = $faker->randomElement($this->genders);
+            $user->setFirstName($faker->firstName(in_array($gender, ['male', 'female']) ? $gender : null));
             $user->setLastName($faker->lastName());
             $user->setEmail($faker->unique()->email());
             $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
@@ -36,6 +38,7 @@ class UserFixtures extends Fixture
         $admin1 = new User();
         $admin1->setFirstName('Florent');
         $admin1->setLastName('Techer');
+        $admin1->setGender('male');
         $admin1->setEmail('admin@example.com');
         $admin1->setPassword($this->passwordHasher->hashPassword($admin1, 'password'));
         $admin1->setRoles(['ROLE_ADMIN']);
@@ -46,6 +49,7 @@ class UserFixtures extends Fixture
         $admin2 = new User();
         $admin2->setFirstName('John');
         $admin2->setLastName('Doe');
+        $admin2->setGender('male');
         $admin2->setEmail('admin2@example.com');
         $admin2->setPassword($this->passwordHasher->hashPassword($admin2, 'password'));
         $admin2->setRoles(['ROLE_SUPER_ADMIN']);

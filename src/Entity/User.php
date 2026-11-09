@@ -52,6 +52,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $isDisabled = null;
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $gender = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -207,6 +210,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsDisabled(bool $isDisabled): static
     {
         $this->isDisabled = $isDisabled;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?string $gender): static
+    {
+        $this->gender = $gender;
 
         return $this;
     }
