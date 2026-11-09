@@ -25,6 +25,7 @@ class UserFixtures extends Fixture
             $gender = $faker->randomElement($this->genders);
             $user->setFirstName($faker->firstName(in_array($gender, ['male', 'female']) ? $gender : null));
             $user->setLastName($faker->lastName());
+            $user->setGender($gender);
             $user->setEmail($faker->unique()->email());
             $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
             $user->setRoles(['ROLE_USER']);
