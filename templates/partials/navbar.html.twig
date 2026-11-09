@@ -1,65 +1,65 @@
 <div class="navbar bg-base-100 shadow-sm">
   {# Coté gauche : bouton menu + logo #}
   <div class="navbar-start">
-      <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost md:hidden" aria-label="Ouvrir le menu">
-              {{ ux_icon('lucide:menu', { class: 'size-5' }) }}
-          </div>
-          <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              {% include 'partials/navlinks.html.twig' %}
-          </ul>
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost md:hidden" aria-label="Ouvrir le menu">
+        {{ ux_icon('lucide:menu', { class: 'size-5' }) }}
       </div>
-      <a href="{{ path('app_home') }}" class="btn btn-ghost text-xl">KapabForge</a>
+      <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        {% include 'partials/navlinks.html.twig' %}
+      </ul>
+    </div>
+    <a href="{{ path('app_home') }}" class="btn btn-ghost text-xl">KapabForge</a>
   </div>
 
   {# Au milieu : menu horizontal #}
   <div class="navbar-center hidden md:flex">
-      <ul class="menu menu-horizontal gap-3 px-1">
-          {% include 'partials/navlinks.html.twig' %}
-      </ul>
+    <ul class="menu menu-horizontal gap-3 px-1">
+      {% include 'partials/navlinks.html.twig' %}
+    </ul>
   </div>
 
   {# Droite : panier + compte #}
   <div class="navbar-end">
-      <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-              <div class="indicator">
-                  {{ ux_icon('lucide:shopping-basket', { class: 'size-5' }) }}
-                  <span class="badge badge-sm indicator-item">8</span>
-              </div>
-          </div>
-          <div tabindex="0" class="card card-sm dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
-              <div class="card-body">
-                  <span class="text-lg font-bold">8 Items</span>
-                  <span class="text-info">Subtotal: $999</span>
-                  <div class="card-actions">
-                      <button class="btn btn-primary btn-block">View cart</button>
-                  </div>
-              </div>
-          </div>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <div class="indicator">
+          {{ ux_icon('lucide:shopping-basket', { class: 'size-5' }) }}
+          <span class="badge badge-sm indicator-item">8</span>
+        </div>
       </div>
+      <div tabindex="0" class="card card-sm dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
+        <div class="card-body">
+          <span class="text-lg font-bold">8 Items</span>
+          <span class="text-info">Subtotal: $999</span>
+          <div class="card-actions">
+            <button class="btn btn-primary btn-block">View cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-              {% if app.user %}
-                  <div class="w-10 rounded-full">
-                      <img alt="Avatar de {{ app.user.firstName }}"
-                            src="{{ asset('images/avatars/' ~ app.user.image|default('default.svg')) }}" />
-                  </div>
-              {% else %}
-                  {{ ux_icon('griddy-icons:user-filled', { class: 'size-5' }) }}
-              {% endif %}
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        {% if app.user %}
+          <div class="w-10 rounded-full">
+            <img alt="Avatar de {{ app.user.firstName }}"
+                 src="{{ asset('images/avatars/' ~ app.user.image|default('default.svg')) }}" />
           </div>
-          <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              {% if app.user %}
-                  <li class="menu-title">{{ app.user.firstName }} {{ app.user.lastName }}</li>
-                  <li><a href="#">Profil</a></li>
-                  <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
-              {% else %}
-                  <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
-                  <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-              {% endif %}
-          </ul>
+        {% else %}
+          {{ ux_icon('griddy-icons:user-filled', { class: 'size-5' }) }}
+        {% endif %}
       </div>
+      <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        {% if app.user %}
+          <li class="menu-title">{{ app.user.firstName }} {{ app.user.lastName }}</li>
+          <li><a href="#">Profil</a></li>
+          <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+        {% else %}
+          <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+          <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
 </div>

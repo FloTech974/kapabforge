@@ -5,65 +5,65 @@
 {% block body %}
 <section class="container px-4 py-10 max-w-6xl mx-auto">
 
-    {# Fil d'Ariane #}
-    <div class="breadcrumbs text-sm mb-4">
-        <ul>
-            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-            <li><a href="{{ path('app_courses') }}">Formations</a></li>
-            <li>{{ course.name|capitalize }}</li>
-        </ul>
-    </div>
+  {# Fil d'Ariane #}
+  <div class="breadcrumbs text-sm mb-4">
+    <ul>
+      <li><a href="{{ path('app_home') }}">Accueil</a></li>
+      <li><a href="{{ path('app_courses') }}">Formations</a></li>
+      <li>{{ course.name|capitalize }}</li>
+    </ul>
+  </div>
 
-    <h1 class="text-4xl font-bold mb-6">{{ course.name|capitalize }}</h1>
+  <h1 class="text-4xl font-bold mb-6">{{ course.name|capitalize }}</h1>
 
-    <div class="tabs tabs-lift">
+  <div class="tabs tabs-lift">
 
-        {# Onglet 1 : Profil #}
-        <input type="radio" name="course_tabs" class="tab" aria-label="Profil" checked="checked" />
-        <div class="tab-content bg-base-100 border-base-300 p-6">
-            <div class="grid gap-8 md:grid-cols-2">
-                <img src="{{ asset('images/courses/' ~ course.image) }}"
-                     alt="{{ course.name }}"
-                     class="aspect-4/3 w-full object-cover rounded-box" />
+    {# Onglet 1 : Profil #}
+    <input type="radio" name="course_tabs" class="tab" aria-label="Profil" checked="checked" />
+    <div class="tab-content bg-base-100 border-base-300 p-6">
+      <div class="grid gap-8 md:grid-cols-2">
+        <img src="{{ asset('images/courses/' ~ course.image) }}"
+             alt="{{ course.name }}"
+             class="aspect-4/3 w-full object-cover rounded-box" />
 
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-wrap gap-2">
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-wrap gap-2">
                         
-                        <span class="badge badge-primary my-0.5">{{ course.category.name }}</span>
-                        <div class="tooltip" data-tip="{{ course.level.prerequisites }}">
-                            <span class="badge badge-outline cursor-help">{{ course.level.name }}</span>
-                        </div>
-                    </div>
-
-                    <h3 class="text-xl font-semibold">Description</h3>
-                    <p>{{ course.shortDescription }}</p>
-                    
-                    <h3 class="text-xl font-semibold">Informations</h3>
-                    <ul class="space-y-1">
-                        <li><strong>Logiciel :</strong> {{ course.software }}</li>
-                        <li><strong>Durée :</strong> {{ course.duration }} h</li>
-                        <li><strong>Leçons :</strong> {{ course.lessonCount }}</li>
-                        <li><strong>Publiée le :</strong> {{ course.createdAt|date('d/m/Y') }}</li>
-                    </ul>
-
-                    <p class="text-3xl font-bold">{{ course.price }} €</p>
-                </div>
+            <span class="badge badge-primary my-0.5">{{ course.category.name }}</span>
+            <div class="tooltip" data-tip="{{ course.level.prerequisites }}">
+              <span class="badge badge-outline cursor-help">{{ course.level.name }}</span>
             </div>
-        </div>
+          </div>
 
-        {# Onglet 2 : Détail #}
-        <input type="radio" name="course_tabs" class="tab" aria-label="Détail" />
-        <div class="tab-content bg-base-100 border-base-300 p-6">
-            
-            <h3 class="text-xl font-semibold mb-4">Description complète</h3>
-            <p class="whitespace-pre-line">{{ course.description }}</p>
+          <h3 class="text-xl font-semibold">Description</h3>
+          <p>{{ course.shortDescription }}</p>
+                    
+          <h3 class="text-xl font-semibold">Informations</h3>
+          <ul class="space-y-1">
+            <li><strong>Logiciel :</strong> {{ course.software }}</li>
+            <li><strong>Durée :</strong> {{ course.duration }} h</li>
+            <li><strong>Leçons :</strong> {{ course.lessonCount }}</li>
+            <li><strong>Publiée le :</strong> {{ course.createdAt|date('d/m/Y') }}</li>
+          </ul>
 
-            {% if course.program %}
-                <a href="{{ asset('programs/' ~ course.program) }}" class="btn btn-outline mt-6" download>
-                    Télécharger le programme (PDF)
-                </a>
-            {% endif %}
+          <p class="text-3xl font-bold">{{ course.price }} €</p>
         </div>
+      </div>
     </div>
+
+    {# Onglet 2 : Détail #}
+    <input type="radio" name="course_tabs" class="tab" aria-label="Détail" />
+    <div class="tab-content bg-base-100 border-base-300 p-6">
+            
+      <h3 class="text-xl font-semibold mb-4">Description complète</h3>
+      <p class="whitespace-pre-line">{{ course.description }}</p>
+
+      {% if course.program %}
+        <a href="{{ asset('programs/' ~ course.program) }}" class="btn btn-outline mt-6" download>
+          Télécharger le programme (PDF)
+        </a>
+      {% endif %}
+    </div>
+  </div>
 </section>
 {% endblock %}
