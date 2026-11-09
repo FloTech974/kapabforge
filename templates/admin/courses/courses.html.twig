@@ -4,14 +4,13 @@
 
 {% block body %}
   <section class="w-full max-w-6xl mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-6">Gestion des Formations</h1>
-
+    <h1 class="text-2xl font-bold mb-5">Gestion des Formations</h1>
+    <a href="{{ path('app_admin_newcourse') }}" class="btn btn-primary mb-4">Créer une formation</a>
     <div class="overflow-x-auto">
       <table class="table">
         <!-- head -->
         <thead>
           <tr>
-            
             <th>Nom</th>
             <th>Niveau</th>
             <th>Prix</th>
