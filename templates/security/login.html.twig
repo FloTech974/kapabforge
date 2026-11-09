@@ -3,8 +3,8 @@
 {% block title %}{{ parent() }}Connexion{% endblock %}
 
 {% block body %}
-<section class="container flex items-center justify-center px-4 py-10 mx-auto">
-    <form method="post">
+<section class="flex flex-col items-center px-4 py-10 mt-10">
+    <form method="post" class="w-full max-w-md">
         <h1 class="text-2xl font-bold mb-6">Se connecter</h1>
 
         {% if error %}
@@ -17,36 +17,19 @@
             </div>
         {% endif %}
 
-        <fieldset class="fieldset flex flex-col bg-base-200 border-base-300 rounded-box w-md border p-4">
-            <legend class="fieldset-legend">Vos identifiants</legend>
+        <fieldset class="fieldset flex flex-col bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <legend class="fieldset-legend font-bold">Vos identifiants</legend>
 
-            <label for="username" class="label">Email</label>
+            <label for="username" class="label text-purple-950">Email</label>
             <input type="email" value="{{ last_username }}" name="_username" id="username" class="input w-full" autocomplete="email" required autofocus />
 
-            <label for="password" class="label">Mot de passe</label>
+            <label for="password" class="label text-purple-950">Mot de passe</label>
             <input type="password" name="_password" id="password" class="input w-full" autocomplete="current-password" required />
             <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}"> 
 
             <button class="btn btn-neutral self-center mt-4 w-50" type="submit">Se connecter</button>
         </fieldset>
-
-        {# <h1 class="text-2xl font-bold mb-6">Se connecter</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}"> #}
-
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
-            </div>
-        #}
-
     </form>
+    <p class="mt-5"><a href="{{ path('app_register') }}">Pas encore inscrit ?</a></p>
 </section>
 {% endblock %}
