@@ -22,7 +22,7 @@
     <input type="radio" name="course_tabs" class="tab" aria-label="Profil" checked="checked" />
     <div class="tab-content bg-base-100 border-base-300 p-6">
       <div class="grid gap-8 md:grid-cols-2">
-        <img src="{{ asset('images/courses/' ~ course.image) }}"
+        <img src="{{ asset('images/courses/' ~ course.image|default('default.jpg')) }}"
              alt="{{ course.name }}"
              class="aspect-4/3 w-full object-cover rounded-box" />
 
