@@ -1,0 +1,61 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ parent() }}Formations{% endblock %}
+
+{% block body %}
+  <section class="w-full max-w-6xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6">Gestion des Formations</h1>
+
+    <div class="overflow-x-auto">
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            
+            <th>Nom</th>
+            <th>Niveau</th>
+            <th>Prix</th>
+            <th>Publié/Brouillon</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          {% for course in courses %}
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div class="avatar">
+                  <div class="mask mask-squircle h-12 w-12">
+                    <img src="{{ asset('images/courses/' ~ course.image) }}" alt="{{ course.name }}" />
+                  </div>
+                </div>
+                <div>
+                  <div class="font-bold">{{ course.name|capitalize }}</div>
+                  <div class="text-sm opacity-50">{{ course.category.name }}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="badge badge-ghost badge-sm">{{ course.level.name }}</span>
+            </td>
+            <td>{{ course.price|number_format(2, ',', ' ') }} €</td>
+            <td>
+              {% if course.isPublished %}
+                <span class="badge badge-success">Publié</span>
+              {% else %}
+                <span class="badge badge-warning">Brouillon</span>
+              {% endif %}
+            </td>
+            <th>
+              <button class="btn btn-ghost btn-xs">details</button>
+            </th>
+          </tr>
+          {% else %}
+            <tr><td colspan="5">Aucune formation.</td></tr>
+          {% endfor %}         
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}
