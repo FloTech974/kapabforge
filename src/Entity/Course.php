@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\CourseRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Attribute as Vich;
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
+#[Vich\Uploadable]
 class Course
 {
     #[ORM\Id]
@@ -40,6 +43,9 @@ class Course
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[Vich\UploadableField(mapping: 'courses', fileNameProperty: 'image')]
+    private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $program = null;
@@ -170,6 +176,22 @@ class Course
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile): static
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
 
         return $this;
     }

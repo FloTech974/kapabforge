@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -48,6 +49,12 @@ class CourseType extends AbstractType
             ->add('isPublished', CheckboxType::class, [
                 'label' => 'Publier la formation',
                 'required' => false,
+            ])
+            ->add('imageFile', VichFileType::class, [
+                'label' => 'Image de la formation',
+                'required' => false,
+                'allow_delete' => true,
+                'download_uri' => false,
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
