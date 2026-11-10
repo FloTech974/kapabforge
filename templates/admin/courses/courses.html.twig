@@ -47,7 +47,7 @@
               {% endif %}
             </td>
             <th>
-              <button class="btn btn-ghost btn-xs">details</button>
+              <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
             </th>
           </tr>
           {% else %}

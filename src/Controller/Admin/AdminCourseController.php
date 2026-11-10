@@ -48,5 +48,42 @@ final class AdminCourseController extends AbstractController
             'form' => $form,
         ]);
     }
-}
 
+    #[Route('/admin/courses/delete/{id}', name: 'app_admin_deletecourse')]
+    public function deleteCourse(Course $course, EntityManagerInterface $manager): Response
+    {
+        $manager->remove($course);
+        $manager->flush();
+        $this->addFlash('info', 'La formation a été supprimée avec succès.');
+
+        return $this->redirectToRoute('app_admin_courses');
+    }
+
+    #[Route('/admin/courses/edit/{id}', name: 'app_admin_editcourse')]
+    public function editCourse(Course $course, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
+    {
+        $form = $this->createForm(CourseType::class, $course);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $course->setUpdatedAt(new \DateTimeImmutable());
+            $course->setSlug($slugger->slug($course->getName())->lower());
+            $manager->flush();
+            $this->addFlash('info', 'La formation a été modifiée avec succès.');
+
+            return $this->redirectToRoute('app_admin_courses');
+        }
+
+        return $this->render('admin/courses/editcourse.html.twig', [
+            'form' => $form,
+            'course' => $course,
+        ]);
+    }
+
+    #[Route('/admin/courses/view/{id}', name: 'app_admin_viewcourse')]
+    public function viewCourse(Course $course, EntityManagerInterface $manager): Response
+    {
+        $course->setIsPublished(!$course->isPublished());
+        $manager->flush();
+        return $this->redirectToRoute('app_admin_courses');
+    }
+}
