@@ -13,8 +13,8 @@
     {% endblock %}
   </head>
 
-  <body class="min-h-screen flex flex-col">
-    {% include "partials/navbar.html.twig" %}
+  <body class="min-h-screen flex flex-col" data-turbo="false">
+    {% include "admin/partials/navbar.html.twig" %}
     <main class="flex-1 w-full">
       {% block body %}{% endblock %}
     </main>

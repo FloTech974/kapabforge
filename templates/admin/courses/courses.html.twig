@@ -48,6 +48,12 @@
             </td>
             <th>
               <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
+              <a href="{{ path('app_admin_editcourse', {'id': course.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
+              {% if course.isPublished %}
+              <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-warning btn-outline">Masquer</a>
+              {% else %}
+              <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
+              {% endif %}
             </th>
           </tr>
           {% else %}
