@@ -30,7 +30,7 @@ security:
 
             login_throttling:
                 max_attempts: 3 # par minute
-                interval : '1 minutes' # avant de réessayer    
+                interval: '1 minutes' # avant de réessayer    
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
