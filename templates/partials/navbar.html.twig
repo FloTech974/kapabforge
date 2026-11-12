@@ -55,7 +55,7 @@
           <li class="menu-title">{{ app.user.firstName }} {{ app.user.lastName }}</li>
           <li><a href="#">Profil</a></li>
           {% if is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('app_admin_courses') }}">Administration</a></li>
+            <li><a href="{{ path('app_admin_courses') }}" data-turbo="false">Administration</a></li>
           {% endif %}
           <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
         {% else %}
