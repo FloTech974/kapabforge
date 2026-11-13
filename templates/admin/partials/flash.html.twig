@@ -1,5 +1,5 @@
 {% set messageCourses = {
-    'succes': 'alert-succes',
+    'success': 'alert-succes',
     'warning': 'alert-warning',
     'info': 'alert-info',
     'error': 'alert-error'
@@ -7,7 +7,7 @@
 
 {% for label, messages in app.flashes %}
     {% for message in messages %}
-        <div class="alert alert-{{ label }} alert-soft mt-2 mb-3">
+        <div class="alert {{ messageCourses[label] }} alert-soft mt-2 mb-3">
             <span>{{ message }}</span>
         </div>
     {% endfor %}

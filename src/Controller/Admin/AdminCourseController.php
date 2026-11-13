@@ -39,7 +39,7 @@ final class AdminCourseController extends AbstractController
             $course->setSlug($slugger->slug($course->getName())->lower());
             $manager->persist($course); 
             $manager->flush();
-            $this->addFlash('succes', 'La formation a été créée avec succès.');
+            $this->addFlash('success', 'La formation a été créée avec succès.');
 
             return $this->redirectToRoute('app_admin_courses');
         }
@@ -68,7 +68,7 @@ final class AdminCourseController extends AbstractController
             $course->setUpdatedAt(new \DateTimeImmutable());
             $course->setSlug($slugger->slug($course->getName())->lower());
             $manager->flush();
-            $this->addFlash('succes', 'La formation a été modifiée avec succès.');
+            $this->addFlash('success', 'La formation a été modifiée avec succès.');
 
             return $this->redirectToRoute('app_admin_courses');
         }
