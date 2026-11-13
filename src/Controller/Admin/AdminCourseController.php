@@ -39,7 +39,7 @@ final class AdminCourseController extends AbstractController
             $course->setSlug($slugger->slug($course->getName())->lower());
             $manager->persist($course); 
             $manager->flush();
-            $this->addFlash('info', 'La formation a été créée avec succès.');
+            $this->addFlash('succes', 'La formation a été créée avec succès.');
 
             return $this->redirectToRoute('app_admin_courses');
         }
@@ -54,7 +54,7 @@ final class AdminCourseController extends AbstractController
     {
         $manager->remove($course);
         $manager->flush();
-        $this->addFlash('info', 'La formation a été supprimée avec succès.');
+        $this->addFlash('warning', 'La formation a été supprimée avec succès.');
 
         return $this->redirectToRoute('app_admin_courses');
     }
@@ -68,7 +68,7 @@ final class AdminCourseController extends AbstractController
             $course->setUpdatedAt(new \DateTimeImmutable());
             $course->setSlug($slugger->slug($course->getName())->lower());
             $manager->flush();
-            $this->addFlash('info', 'La formation a été modifiée avec succès.');
+            $this->addFlash('succes', 'La formation a été modifiée avec succès.');
 
             return $this->redirectToRoute('app_admin_courses');
         }
@@ -84,6 +84,8 @@ final class AdminCourseController extends AbstractController
     {
         $course->setIsPublished(!$course->isPublished());
         $manager->flush();
+        $this->addFlash('info', $course->isPublished() ? 'La formation est maintenant visible.' : 'La formation est maintenant masquée.');
+
         return $this->redirectToRoute('app_admin_courses');
     }
 }
