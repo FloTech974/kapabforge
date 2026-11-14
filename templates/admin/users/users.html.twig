@@ -39,9 +39,9 @@
                     </td>
                     <td>
                         {% if user.isDisabled %}
-                            <a href="#" class="w-[40%] btn btn-sm btn-success">Activer</a>
+                            <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-success">Activer</a>
                         {% else %}
-                            <a href="#" class="w-[40%] btn btn-sm btn-warning">Désactiver</a>
+                            <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-warning">Désactiver</a>
                         {% endif %}
                     </td>
                 </tr>
