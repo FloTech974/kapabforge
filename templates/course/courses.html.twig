@@ -4,33 +4,33 @@
 
 {% block body %}
 <section class="container px-4 py-10 max-w-6xl mx-auto">
-  <h1 class="text-3xl font-bold mb-6">Nos Formations</h1>
+    <h1 class="text-3xl font-bold mb-6">Nos Formations</h1>
 
-  {% if category is defined %}
-  <div class="card card-side bg-base-200 shadow-sm mb-8">
-    <figure class="w-48 shrink-0">
-      <img src="{{ asset('images/categories/' ~ category.image|default('default.jpg')) }}"
-           alt="{{ category.name }}"
-           class="h-full w-full object-cover" />
-    </figure>
-    <div class="card-body">
-      <h2 class="card-title text-2xl">{{ category.name }}</h2>
-      <p>{{ category.description }}</p>
+    {% if category is defined %}
+    <div class="card card-side bg-base-200 shadow-sm mb-8">
+        <figure class="w-48 shrink-0">
+            <img src="{{ asset('images/categories/' ~ category.image|default('default.jpg')) }}"
+                      alt="{{ category.name }}"
+                      class="h-full w-full object-cover" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title text-2xl">{{ category.name }}</h2>
+            <p>{{ category.description }}</p>
+        </div>
     </div>
-  </div>
 {% endif %}
 
-  {{ render(controller(
-    'App\\Controller\\CategoryController::categories',
-    {current: app.request.attributes.get('slug')}
-  )) }}
+    {{ render(controller(
+        'App\\Controller\\CategoryController::categories',
+        {current: app.request.attributes.get('slug')}
+    )) }}
 
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {% for course in courses %}
-      {% include 'partials/course_card.html.twig' %}
-    {% else %}
-      <p>Aucune formation disponible pour le moment.</p>
-    {% endfor %}
-  </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {% for course in courses %}
+            {% include 'partials/course_card.html.twig' %}
+        {% else %}
+            <p>Aucune formation disponible pour le moment.</p>
+        {% endfor %}
+    </div>
 </section>
 {% endblock %}

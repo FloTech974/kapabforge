@@ -1,38 +1,38 @@
 <div class="navbar bg-base-100 shadow-sm">
-  {# Coté gauche : bouton menu + logo #}
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost md:hidden" aria-label="Ouvrir le menu">
-        {{ ux_icon('lucide:menu', { class: 'size-5' }) }}
-      </div>
-      <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        {% include 'admin/partials/navlinks.html.twig' %}
-      </ul>
+    {# Coté gauche : bouton menu + logo #}
+    <div class="navbar-start">
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost md:hidden" aria-label="Ouvrir le menu">
+                {{ ux_icon('lucide:menu', { class: 'size-5' }) }}
+            </div>
+            <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                {% include 'admin/partials/navlinks.html.twig' %}
+            </ul>
+        </div>
+        <a href="{{ path('app_home') }}" class="btn btn-ghost text-xl" data-turbo="false">KapabForge</a>
     </div>
-    <a href="{{ path('app_home') }}" class="btn btn-ghost text-xl" data-turbo="false">KapabForge</a>
-  </div>
 
-  {# Au milieu : menu horizontal #}
-  <div class="navbar-center hidden md:flex">
-    <ul class="menu menu-horizontal gap-3 px-1">
-      {% include 'admin/partials/navlinks.html.twig' %}
-    </ul>
-  </div>
-
-  <div class="navbar-end">
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-          <div class="w-10 rounded-full">
-            <img alt="Avatar de {{ app.user.firstName }}"
-                 src="{{ asset('images/avatars/' ~ app.user.image|default('default.svg')) }}" />
-          </div>
-      </div>
-      <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li class="menu-title">{{ app.user.firstName }} {{ app.user.lastName }}</li>
-        <li><a href="#">Profil</a></li>
-        <li><a href="{{ path('app_home') }}" data-turbo="false">Retour au site</a></li>
-        <li><a href="{{ path('app_logout') }}" data-turbo="false">Se déconnecter</a></li>
-      </ul>
+    {# Au milieu : menu horizontal #}
+    <div class="navbar-center hidden md:flex">
+        <ul class="menu menu-horizontal gap-3 px-1">
+            {% include 'admin/partials/navlinks.html.twig' %}
+        </ul>
     </div>
-  </div>
+
+    <div class="navbar-end">
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                        <img alt="Avatar de {{ app.user.firstName }}"
+                                  src="{{ asset('images/avatars/' ~ app.user.image|default('default.svg')) }}" />
+                    </div>
+            </div>
+            <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li class="menu-title">{{ app.user.firstName }} {{ app.user.lastName }}</li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="{{ path('app_home') }}" data-turbo="false">Retour au site</a></li>
+                <li><a href="{{ path('app_logout') }}" data-turbo="false">Se déconnecter</a></li>
+            </ul>
+        </div>
+    </div>
 </div>

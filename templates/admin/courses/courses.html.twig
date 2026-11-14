@@ -3,65 +3,65 @@
 {% block title %}{{ parent() }}Formations{% endblock %}
 
 {% block body %}
-  <section class="w-[75%] mx-auto p-6">
-    <h1 class="text-3xl font-normal mb-5">Gestion des Formations</h1>
-    {% include "admin/partials/flash.html.twig" %}
-    <a href="{{ path('app_admin_newcourse') }}" class="btn btn-primary mb-4">Créer une formation</a>
-    <div class="overflow-x-auto">
-      <table class="table table-zebra">
-        <!-- head -->
-        <thead>
-          <tr class="text-amber-500">
-            <th>Nom</th>
-            <th>Niveau</th>
-            <th>Prix</th>
-            <th>Publié/Brouillon</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- row 1 -->
-          {% for course in courses %}
-          <tr>
-            <td>
-              <div class="flex items-center gap-3">
-                <div class="avatar">
-                  <div class="mask mask-squircle h-12 w-12">
-                    <img src="{{ asset('images/courses/' ~ course.image|default('default.jpg')) }}" alt="{{ course.name }}" />
-                  </div>
-                </div>
-                <div>
-                  <div class="font-bold">{{ course.name|capitalize }}</div>
-                  <div class="text-sm opacity-50">{{ course.category.name }}</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <span class="badge badge-ghost">{{ course.level.name }}</span>
-            </td>
-            <td>{{ course.price|number_format(2, ',', ' ') }} €</td>
-            <td>
-              {% if course.isPublished %}
-                <span class="badge badge-success">Publié</span>
-              {% else %}
-                <span class="badge badge-warning">Brouillon</span>
-              {% endif %}
-            </td>
-            <th>
-              <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
-              <a href="{{ path('app_admin_editcourse', {'id': course.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
-              {% if course.isPublished %}
-              <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-warning btn-outline">Masquer</a>
-              {% else %}
-              <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
-              {% endif %}
-            </th>
-          </tr>
-          {% else %}
-            <tr><td colspan="5">Aucune formation.</td></tr>
-          {% endfor %}         
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <section class="w-[75%] mx-auto p-6">
+        <h1 class="text-3xl font-normal mb-5">Gestion des Formations</h1>
+        {% include "admin/partials/flash.html.twig" %}
+        <a href="{{ path('app_admin_newcourse') }}" class="btn btn-primary mb-4">Créer une formation</a>
+        <div class="overflow-x-auto">
+            <table class="table table-zebra">
+                <!-- head -->
+                <thead>
+                    <tr class="text-amber-500">
+                        <th>Nom</th>
+                        <th>Niveau</th>
+                        <th>Prix</th>
+                        <th>Publié/Brouillon</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- row 1 -->
+                    {% for course in courses %}
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="avatar">
+                                    <div class="mask mask-squircle h-12 w-12">
+                                        <img src="{{ asset('images/courses/' ~ course.image|default('default.jpg')) }}" alt="{{ course.name }}" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-bold">{{ course.name|capitalize }}</div>
+                                    <div class="text-sm opacity-50">{{ course.category.name }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge badge-ghost">{{ course.level.name }}</span>
+                        </td>
+                        <td>{{ course.price|number_format(2, ',', ' ') }} €</td>
+                        <td>
+                            {% if course.isPublished %}
+                                <span class="badge badge-success">Publié</span>
+                            {% else %}
+                                <span class="badge badge-warning">Brouillon</span>
+                            {% endif %}
+                        </td>
+                        <th>
+                            <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
+                            <a href="{{ path('app_admin_editcourse', {'id': course.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
+                            {% if course.isPublished %}
+                            <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-warning btn-outline">Masquer</a>
+                            {% else %}
+                            <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
+                            {% endif %}
+                        </th>
+                    </tr>
+                    {% else %}
+                        <tr><td colspan="5">Aucune formation.</td></tr>
+                    {% endfor %}         
+                </tbody>
+            </table>
+        </div>
+    </section>
 {% endblock %}

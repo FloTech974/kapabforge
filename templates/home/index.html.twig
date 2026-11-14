@@ -4,33 +4,33 @@
 
 {% block body %}
 {# Hero #}
-  <section class="hero min-h-[60vh] bg-base-200">
-    <div class="hero-content text-center">
-      <div class="max-w-xl">
-        <h1 class="text-5xl font-bold">Bienvenue sur KapabForge</h1>
-        <p class="py-6">
-          Développez vos compétences grâce à nos formations et suivez nos dernières actualités.
-        </p>
-        <a href="{{ path('app_courses') }}" class="btn btn-primary">Voir les formations</a>
-      </div>
-    </div>
-  </section>
+    <section class="hero min-h-[60vh] bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-xl">
+                <h1 class="text-5xl font-bold">Bienvenue sur KapabForge</h1>
+                <p class="py-6">
+                    Développez vos compétences grâce à nos formations et suivez nos dernières actualités.
+                </p>
+                <a href="{{ path('app_courses') }}" class="btn btn-primary">Voir les formations</a>
+            </div>
+        </div>
+    </section>
 
-  <section class="container px-4 py-10 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6">Dernières formations</h2>
-        
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {% for course in courses %}
-        {% include 'partials/course_card.html.twig' %}
-      {% else %}
-        <p>Aucune formation disponible pour le moment.</p>
-      {% endfor %}
-    </div>
-  </section>
+    <section class="container px-4 py-10 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">Dernières formations</h2>
+                
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {% for course in courses %}
+                {% include 'partials/course_card.html.twig' %}
+            {% else %}
+                <p>Aucune formation disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+    </section>
 
-  {# Dernières actualités (à remplir quand l'entité Actualite existera) #}
-  <section class="container px-4 py-10 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6">Dernières actualités</h2>
-    <p class="text-base-content/70">Bientôt disponible.</p>
-  </section>
+    {# Dernières actualités (à remplir quand l'entité Actualite existera) #}
+    <section class="container px-4 py-10 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">Dernières actualités</h2>
+        <p class="text-base-content/70">Bientôt disponible.</p>
+    </section>
 {% endblock %}

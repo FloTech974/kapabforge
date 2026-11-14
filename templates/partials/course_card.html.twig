@@ -1,19 +1,19 @@
 <div class="card card-sm bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in">
-  <figure>
-    <img src="{{ asset('images/courses/' ~ course.image|default('default.jpg')) }}"
-         alt="{{ course.name }}"
-         class="aspect-4/3 w-full object-cover"/>
-  </figure>
-  <div class="card-body">
-    <div class="flex flex-wrap gap-2">
-      <span class="badge badge-primary h-auto py-0.5">{{ course.category.name }}</span>
-      <span class="badge badge-outline h-auto py-0.5">{{ course.level.name }}</span>
+    <figure>
+        <img src="{{ asset('images/courses/' ~ course.image|default('default.jpg')) }}"
+                  alt="{{ course.name }}"
+                  class="aspect-4/3 w-full object-cover"/>
+    </figure>
+    <div class="card-body">
+        <div class="flex flex-wrap gap-2">
+            <span class="badge badge-primary h-auto py-0.5">{{ course.category.name }}</span>
+            <span class="badge badge-outline h-auto py-0.5">{{ course.level.name }}</span>
+        </div>
+        <h2 class="card-title">{{ course.name|capitalize }}</h2>
+        <p>{{ course.shortDescription }}</p>
+        <div class="card-actions justify-between items-center">
+            <span class="text-lg font-bold">{{ course.price }} €</span>
+            <a href="{{ path('app_course', { slug: course.slug }) }}" class="btn btn-primary btn-sm">Voir la formation</a>
+        </div>
     </div>
-    <h2 class="card-title">{{ course.name|capitalize }}</h2>
-    <p>{{ course.shortDescription }}</p>
-    <div class="card-actions justify-between items-center">
-      <span class="text-lg font-bold">{{ course.price }} €</span>
-      <a href="{{ path('app_course', { slug: course.slug }) }}" class="btn btn-primary btn-sm">Voir la formation</a>
-    </div>
-  </div>
 </div>
