@@ -1,13 +1,13 @@
 <div class="flex flex-wrap gap-2 mb-8">
-    <a href="{{ path('app_courses') }}"
-          class="btn btn-sm {{ current is null ? 'btn-primary' : 'btn-outline' }}">
-        Toutes
-    </a>
+  <a href="{{ path('app_courses') }}"
+     class="btn btn-sm {{ current is null ? 'btn-primary' : 'btn-outline' }}">
+    Toutes
+  </a>
 
-    {% for category in categories %}
-        <a href="{{ path('app_courses_cat', {slug: category.slug}) }}"
-              class="btn btn-sm {{ current == category.slug ? 'btn-primary' : 'btn-outline' }}">
-            {{ category.name }}
-        </a>
-    {% endfor %}
+  {% for category in categories %}
+    <a href="{{ path('app_courses_cat', {slug: category.slug}) }}"
+       class="btn btn-sm {{ current == category.slug ? 'btn-primary' : 'btn-outline' }}">
+      {{ category.name }}
+    </a>
+  {% endfor %}
 </div>

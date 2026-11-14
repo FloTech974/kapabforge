@@ -4,14 +4,14 @@
 
 {% block body %}
 <section class="container flex justify-center px-4 py-10 max-w-6xl mx-auto">
-    <div class="rounded-xl bg-base-300 w-full max-w-md p-6 [&_.input]:w-full [&_.select]:w-full">
-        <h1 class="font-bold text-2xl mb-6">S'inscrire</h1>
-        {{ form_errors(registrationForm) }}
-        {{ form_start(registrationForm) }}
-            {{ form_widget(registrationForm) }}
-            <button type="submit" class="btn btn-primary w-full">S'inscrire</button>
-            <p class="mt-5"><a href="{{ path('app_login') }}">Déjà inscrit ? Se connecter</a></p>
-        {{ form_end(registrationForm) }}
-    </div>
+  <div class="rounded-xl bg-base-300 w-full max-w-md p-6 [&_.input]:w-full [&_.select]:w-full">
+    <h1 class="font-bold text-2xl mb-6">S'inscrire</h1>
+    {{ form_errors(registrationForm) }}
+    {{ form_start(registrationForm) }}
+      {{ form_widget(registrationForm) }}
+      <button type="submit" class="btn btn-primary w-full">S'inscrire</button>
+      <p class="mt-5"><a href="{{ path('app_login') }}">Déjà inscrit ? Se connecter</a></p>
+    {{ form_end(registrationForm) }}
+  </div>
 </section>
 {% endblock %}
