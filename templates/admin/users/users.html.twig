@@ -1,0 +1,53 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ parent()}}Utilisateurs{% endblock %}
+
+{% block body %}
+<section class="w-[75%] mx-auto p-6">
+    <div class="overflow-x-auto">
+    {% include "admin/partials/flash.html.twig" %}
+        <h1 class="text-3xl font-normal mb-5">Gestion des utilisateurs</h1>
+        <a href="#" class="btn btn-primary mb-4">Ajouter un utilisateur</a>
+        <table class="table table-zebra">
+            <!-- head -->
+            <thead>
+                <tr class="text-amber-500">
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Inscrit le</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}    
+                <!-- row 1 -->
+                <tr>
+                    <td class="font-black">{{ user.lastName }}</td>
+                    <td class="font-black">{{ user.firstName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles|join(', ') }}</td>
+                    <td>{{ user.createdAt|date('d/m/Y') }}</td>
+                    <td>
+                    {% if user.isDisabled %}
+                        <span class="badge badge-error">Désactivé</span>
+                    {% else %}
+                        <span class="badge badge-success">Actif</span>
+                    {% endif %}
+                    </td>
+                    <td>
+                        {% if user.isDisabled %}
+                            <a href="#" class="w-[40%] btn btn-sm btn-success">Activer</a>
+                        {% else %}
+                            <a href="#" class="w-[40%] btn btn-sm btn-warning">Désactiver</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
