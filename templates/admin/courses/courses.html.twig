@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }}Formations{% endblock %}
 
 {% block body %}
-  <section class="w-full max-w-6xl mx-auto p-6">
+  <section class="w-[75%] mx-auto p-6">
     <h1 class="text-3xl font-normal mb-5">Gestion des Formations</h1>
     {% include "admin/partials/flash.html.twig" %}
     <a href="{{ path('app_admin_newcourse') }}" class="btn btn-primary mb-4">Créer une formation</a>
@@ -11,7 +11,7 @@
       <table class="table table-zebra">
         <!-- head -->
         <thead>
-          <tr>
+          <tr class="text-amber-500">
             <th>Nom</th>
             <th>Niveau</th>
             <th>Prix</th>
@@ -37,7 +37,7 @@
               </div>
             </td>
             <td>
-              <span class="badge badge-ghost badge-sm">{{ course.level.name }}</span>
+              <span class="badge badge-ghost">{{ course.level.name }}</span>
             </td>
             <td>{{ course.price|number_format(2, ',', ' ') }} €</td>
             <td>
