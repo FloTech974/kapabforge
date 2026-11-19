@@ -3,7 +3,7 @@
 {% block title %}{{ parent()}}Utilisateurs{% endblock %}
 
 {% block body %}
-<section class="w-[75%] mx-auto p-6">
+<section class="w-full mx-auto p-6">
   <div class="overflow-x-auto">
   {% include "admin/partials/flash.html.twig" %}
     <h1 class="text-3xl font-normal mb-5">Gestion des utilisateurs</h1>
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for user in users %}    
+        {% for user in users %}
         <!-- row 1 -->
         <tr>
           <td class="font-black">{{ user.lastName }}</td>
@@ -38,14 +38,16 @@
           {% endif %}
           </td>
           <td>
-            {% if user.isDisabled %}
+            {% if 'ROLE_SUPER_ADMIN' in user.roles %}
+            <a class="btn btn-sm btn-disabled">Compte protégé</a>
+            {% elseif user.isDisabled %}
               <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-success">Activer</a>
             {% else %}
               <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-warning">Désactiver</a>
             {% endif %}
           </td>
         </tr>
-      {% endfor %}                
+      {% endfor %}
       </tbody>
     </table>
   </div>

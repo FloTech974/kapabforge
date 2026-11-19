@@ -1,4 +1,6 @@
 <li><a href="{{ path('app_admin_courses') }}">Formations</a></li>
+{% if is_granted ("ROLE_SUPER_ADMIN") %}
 <li><a href="{{ path('app_admin_users') }}">Utilisateurs</a></li>
+{% endif %}
 <li><a href="#">Commentaires</a></li>
 <li><a href="#">Actualités</a></li>
