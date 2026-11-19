@@ -1,7 +1,48 @@
 {% block footer %}
-<footer class="footer footer-center bg-base-200 text-base-content p-6">
-  <aside>
-    <p>© {{ "now"|date("Y") }} KapabForge - Tous droits réservés</p>
+<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+  <nav>
+    <h6 class="footer-title">Formations</h6>
+    <a href="{{ path('app_courses') }}" class="link link-hover">Toutes les formations</a>
+    <a href="{{ path('app_home') }}" class="link link-hover">Nouveautés</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">KapabForge</h6>
+    <a href="{{ path('app_home') }}" class="link link-hover">Accueil</a>
+    <a href="#" class="link link-hover">Actualités</a>
+    <a href="#" class="link link-hover">Contact</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Mon compte</h6>
+    {% if app.user %}
+      <a href="#" class="link link-hover">Mon profil</a>
+      <a href="{{ path('app_logout') }}" class="link link-hover" data-turbo="false">Se déconnecter</a>
+    {% else %}
+      <a href="{{ path('app_login') }}" class="link link-hover">Se connecter</a>
+      <a href="{{ path('app_register') }}" class="link link-hover">S'inscrire</a>
+    {% endif %}
+  </nav>
+  <nav>
+    <h6 class="footer-title">Légal</h6>
+    <a href="#" class="link link-hover">Mentions légales</a>
+    <a href="#" class="link link-hover">Confidentialité</a>
+    <a href="#" class="link link-hover">Cookies</a>
+  </nav>
+</footer>
+<footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
+  <aside class="grid-flow-col items-center">
+    {{ ux_icon('lucide:gamepad-2', { class: 'size-8' }) }}
+    <p>
+      <span class="font-bold">KapabForge</span>
+      <br />
+      Apprends à créer tes propres jeux vidéo · © {{ "now"|date("Y") }}
+    </p>
   </aside>
+  <nav class="md:place-self-center md:justify-self-end">
+    <div class="grid grid-flow-col gap-4">
+      <a href="#" aria-label="YouTube">{{ ux_icon('mdi:youtube', { class: 'size-6' }) }}</a>
+      <a href="#" aria-label="Discord">{{ ux_icon('mdi:discord', { class: 'size-6' }) }}</a>
+      <a href="#" aria-label="Twitch">{{ ux_icon('mdi:twitch', { class: 'size-6' }) }}</a>
+    </div>
+  </nav>
 </footer>
 {% endblock %}
