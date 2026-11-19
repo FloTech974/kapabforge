@@ -2,6 +2,11 @@
 
 {% block title %}{{ parent()}}Utilisateurs{% endblock %}
 
+{% set roleLabel = {
+  'ROLE_USER': 'Membre',
+  'ROLE_ADMIN': 'Admin',
+} %}
+
 {% block body %}
 <section class="w-full mx-auto p-6">
   <div class="overflow-x-auto">
@@ -28,7 +33,7 @@
           <td class="font-black">{{ user.lastName }}</td>
           <td class="font-black">{{ user.firstName }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.roles|join(', ') }}</td>
+          <td>{{ user.roles|first|replace({'ROLE_': ''})|capitalize }}</td>
           <td>{{ user.createdAt|date('d/m/Y') }}</td>
           <td>
           {% if user.isDisabled %}
@@ -38,13 +43,27 @@
           {% endif %}
           </td>
           <td>
-            {% if 'ROLE_SUPER_ADMIN' in user.roles %}
-            <a class="btn btn-sm btn-disabled">Compte protégé</a>
-            {% elseif user.isDisabled %}
-              <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-success">Activer</a>
-            {% else %}
-              <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-warning">Désactiver</a>
+            <div class="flex gap-2">
+              {% if 'ROLE_SUPER_ADMIN' in user.roles %}
+              <a class="btn btn-sm btn-disabled">Compte protégé</a>
+              {% elseif user.isDisabled %}
+              <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-success btn-outline">Activer</a>
+              {% else %}
+              <a href="{{ path('app_admin_toggleuser', {id: user.id}) }}" class="btn btn-sm btn-warning btn-outline">Désactiver</a>
+              {% endif %}
+            {% if is_granted('ROLE_SUPER_ADMIN') and 'ROLE_SUPER_ADMIN' not in user.roles %}
+              <button class="btn btn-sm btn-info btn-outline" popovertarget="roles-{{ user.id }}" style="anchor-name: --roles-{{ user.id }}">
+                Promouvoir
+              </button>
+              <ul class="dropdown dropdown-end menu w-40 rounded-box bg-base-100 shadow-sm" popover id="roles-{{ user.id }}" style="position-anchor: --roles-{{ user.id }}">
+                {% for role, label in roleLabel %}
+                  {% if role not in user.roles %}
+                    <li><a href="{{ path('app_admin_promoteuser', {id: user.id, role: role}) }}">{{ label }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
             {% endif %}
+            </div>
           </td>
         </tr>
       {% endfor %}
