@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }}Formations{% endblock %}
 
 {% block body %}
-  <section class="w-[75%] mx-auto p-6">
+  <section class="w-full mx-auto p-6">
     <h1 class="text-3xl font-normal mb-5">Gestion des Formations</h1>
     {% include "admin/partials/flash.html.twig" %}
     <a href="{{ path('app_admin_newcourse') }}" class="btn btn-primary mb-4">Créer une formation</a>
@@ -48,18 +48,20 @@
               {% endif %}
             </td>
             <th>
-              <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
-              <a href="{{ path('app_admin_editcourse', {'id': course.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
-              {% if course.isPublished %}
-              <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-warning btn-outline">Masquer</a>
-              {% else %}
-              <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
-              {% endif %}
+              <div class="flex gap-2">
+                <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
+                <a href="{{ path('app_admin_editcourse', {'id': course.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
+                {% if course.isPublished %}
+                <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-warning btn-outline">Masquer</a>
+                {% else %}
+                <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
+                {% endif %}
+              </div>
             </th>
           </tr>
           {% else %}
             <tr><td colspan="5">Aucune formation.</td></tr>
-          {% endfor %}         
+          {% endfor %}
         </tbody>
       </table>
     </div>
