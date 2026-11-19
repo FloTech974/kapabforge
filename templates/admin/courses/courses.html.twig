@@ -47,7 +47,7 @@
                 <span class="badge badge-warning">Brouillon</span>
               {% endif %}
             </td>
-            <th>
+            <td>
               <div class="flex gap-2">
                 <a href="{{ path('app_admin_deletecourse', {'id': course.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer la formation ?')">Supprimer</a>
                 <a href="{{ path('app_admin_editcourse', {'id': course.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
@@ -57,7 +57,7 @@
                 <a href="{{ path('app_admin_viewcourse', {'id': course.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
                 {% endif %}
               </div>
-            </th>
+            </td>
           </tr>
           {% else %}
             <tr><td colspan="5">Aucune formation.</td></tr>
