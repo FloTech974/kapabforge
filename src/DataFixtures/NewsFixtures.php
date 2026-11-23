@@ -33,7 +33,7 @@ class NewsFixtures extends Fixture
          // Instanciation de phpFaker
         $faker = Factory::create('fr_FR');
 
-        foreach($this->title as $index => $titles) {
+        foreach($this->titles as $index => $titles) {
             $news = new News()
                 ->setName($titles)
                 ->setContent($faker->paragraphs(rand(10, 20), true))
