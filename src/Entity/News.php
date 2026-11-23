@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\NewsRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfo,ny\Component\Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Attribute as Vich;
 
 #[ORM\Entity(repositoryClass: NewsRepository::class)]
+#[Vich\Uploadable]
 class News
 {
     #[ORM\Id]
@@ -25,6 +28,9 @@ class News
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[Vich\UploadableField(mapping: 'news', fileNameProperty: 'image')]
+    private ?File $imageFile = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -84,6 +90,22 @@ class News
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+        public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile): static
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
 
         return $this;
     }
