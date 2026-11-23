@@ -31,10 +31,6 @@ final class CourseController extends AbstractController
             'isPublished' => true,
         ]);
 
-        if (!$course) {
-            throw $this->createNotFoundException('Formation non trouvée');
-        }
-
         return $this->render('course/course.html.twig', [
             'course' => $course,
         ]);
@@ -44,10 +40,6 @@ final class CourseController extends AbstractController
     public function courseCat(string $slug, CourseRepository $repository, CategoryRepository $categoryRepository): Response
     {
         $category = $categoryRepository->findOneBy(['slug' => $slug]);
-
-        if (!$category) {
-            throw $this->createNotFoundException('Catégorie non trouvée');
-        }
 
         $courses = $repository->findByCategory($slug);
 
