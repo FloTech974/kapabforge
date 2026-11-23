@@ -1,27 +1,27 @@
 <div class="card card-sm bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in">
   <figure>
-    <img src="{{ asset('images/news/' ~ item.image|default('default.jpg')) }}"
-         alt="{{ item.name }}"
+    <img src="{{ asset('images/news/' ~ article.image|default('default.jpg')) }}"
+         alt="{{ article.name }}"
          class="aspect-4/3 w-full object-cover"/>
   </figure>
   <div class="card-body">
-    <span class="text-sm opacity-60">{{ item.createdAt|date('d/m/Y') }}</span>
-    <h2 class="card-title">{{ item.name }}</h2>
-    <p>{{ item.content|slice(0, 120) }}…</p>
+    <span class="text-sm opacity-60">{{ article.createdAt|date('d/m/Y') }}</span>
+    <h2 class="card-title">{{ article.name }}</h2>
+    <p>{{ article.content|slice(0, 120) }}…</p>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary btn-sm" onclick="news_{{ item.id }}.showModal()">Lire la suite</button>
+      <button class="btn btn-primary btn-sm" onclick="news_{{ article.id }}.showModal()">Lire la suite</button>
     </div>
   </div>
 </div>
 
-<dialog id="news_{{ item.id }}" class="modal">
+<dialog id="news_{{ article.id }}" class="modal">
   <div class="modal-box max-w-3xl">
-    <img src="{{ asset('images/news/' ~ item.image|default('default.jpg')) }}"
-         alt="{{ item.name }}"
+    <img src="{{ asset('images/news/' ~ article.image|default('default.jpg')) }}"
+         alt="{{ article.name }}"
          class="w-full rounded-box mb-4"/>
-    <span class="text-sm opacity-60">{{ item.createdAt|date('d/m/Y') }}</span>
-    <h3 class="text-2xl font-bold mb-4">{{ item.name }}</h3>
-    <div class="space-y-3">{{ item.content|nl2br }}</div>
+    <span class="text-sm opacity-60">{{ article.createdAt|date('d/m/Y') }}</span>
+    <h3 class="text-2xl font-bold mb-4">{{ article.name }}</h3>
+    <div class="space-y-3">{{ article.content|nl2br }}</div>
     <div class="modal-action">
       <form method="dialog">
         <button class="btn">Fermer</button>

@@ -7,7 +7,7 @@
   <h1 class="text-3xl font-bold mb-6">Actualités</h1>
 
   <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {% for item in news %}
+    {% for article in news %}
       {% include 'partials/news_card.html.twig' %}
     {% else %}
       <p>Aucune actualité pour le moment.</p>

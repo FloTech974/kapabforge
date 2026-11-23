@@ -18,7 +18,7 @@
 
   <section class="container px-4 py-10 max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold mb-6">Dernières formations</h2>
-        
+
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {% for course in courses %}
         {% include 'partials/course_card.html.twig' %}
@@ -28,9 +28,16 @@
     </div>
   </section>
 
-  {# Dernières actualités (à remplir quand l'entité Actualite existera) #}
+  {# Dernières actualités #}
   <section class="container px-4 py-10 max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold mb-6">Dernières actualités</h2>
-    <p class="text-base-content/70">Bientôt disponible.</p>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {% for article in news %}
+          {% include 'partials/news_card.html.twig' %}
+        {% else %}
+          <p>Aucune actualité disponible pour le moment</p>
+        {% endfor %}
+    </div>
   </section>
 {% endblock %}
