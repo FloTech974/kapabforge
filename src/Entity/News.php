@@ -94,7 +94,7 @@ class News
         return $this;
     }
 
-        public function getImageFile(): ?File
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
