@@ -1,11 +1,11 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}{{ parent() }}Créer une formation{% endblock %}
+{% block title %}{{ parent() }}Créer une actualité{% endblock %}
 
 {% block body %}
 <section class="w-full max-w-md mx-auto px-4 py-8">
   <h1 class="text-3xl font-normal">Créer une actualité</h1>
-  <a href="{{ path('app_admin_courses') }}" class="btn btn-ghost my-4"> {{ ux_icon('lucide:arrow-left', { class: 'size-5' }) }} Retour à la liste</a>
+  <a href="{{ path('app_admin_news') }}" class="btn btn-ghost my-4"> {{ ux_icon('lucide:arrow-left', { class: 'size-5' }) }} Retour à la liste</a>
   <div class="rounded-xl bg-base-300 p-6 form-full">
     {{ form_start(form) }}
       {{ form_widget(form) }}
