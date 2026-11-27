@@ -6,7 +6,7 @@
 <section class="w-full max-w-md mx-auto px-4 py-8">
   <h1 class="text-3xl font-normal">Créer une actualité</h1>
   <a href="{{ path('app_admin_courses') }}" class="btn btn-ghost my-4"> {{ ux_icon('lucide:arrow-left', { class: 'size-5' }) }} Retour à la liste</a>
-  <div class="rounded-xl bg-base-300 p-6 [&_.input]:w-full [&_.select]:w-full [&_.textarea]:w-full">
+  <div class="rounded-xl bg-base-300 p-6 form-full">
     {{ form_start(form) }}
       {{ form_widget(form) }}
       <button class="w-full btn btn-primary">Créer</button>

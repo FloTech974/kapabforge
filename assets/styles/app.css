@@ -4,3 +4,9 @@
     themes: light --default, dark --prefersdark, cupcake, dim;
 }
 
+.form-full .input,
+.form-full .select,
+.form-full .textarea,
+.form-full .file-input {
+    width: 100%;
+}
