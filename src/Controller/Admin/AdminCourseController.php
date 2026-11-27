@@ -20,7 +20,7 @@ final class AdminCourseController extends AbstractController
     {
         $courses = $repository->findBy(
             [],
-            ['createdAt' => 'DESC']       
+            ['createdAt' => 'DESC']
         );
         return $this->render('admin/courses/courses.html.twig', [
             'courses' => $courses,
@@ -37,7 +37,7 @@ final class AdminCourseController extends AbstractController
             $course->setCreatedAt(new \DateTimeImmutable());
             $course->setUpdatedAt(new \DateTimeImmutable());
             $course->setSlug($slugger->slug($course->getName())->lower());
-            $manager->persist($course); 
+            $manager->persist($course);
             $manager->flush();
             $this->addFlash('success', 'La formation a été créée avec succès.');
 
