@@ -1,0 +1,63 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ parent() }}Actualités{% endblock %}
+
+{% block body %}
+  <section class="w-full mx-auto p-6">
+    <h1 class="text-3xl font-normal mb-5">Gestion des actualités</h1>
+    {% include "admin/partials/flash.html.twig" %}
+    <a href="#" class="btn btn-primary mb-4">Créer un article</a>
+    <div class="overflow-x-auto">
+      <table class="table table-zebra">
+        <!-- head -->
+        <thead>
+          <tr class="text-amber-500">
+            <th>Nom</th>
+            <th>Publié/Brouillon</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          {% for article in news %}
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div class="avatar">
+                  <div class="mask mask-squircle h-12 w-12">
+                    <img src="{{ asset('images/news/' ~ article.image|default('default.jpg')) }}" alt="{{ article.name }}" />
+                  </div>
+                </div>
+                <div>
+                  <div class="font-bold">{{ article.name|capitalize }}</div>
+                  <div class="text-sm opacity-50">{{ article.createdAt|date('d/m/Y') }}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              {% if article.isPublished %}
+                <span class="badge badge-success">Publié</span>
+              {% else %}
+                <span class="badge badge-warning">Brouillon</span>
+              {% endif %}
+            </td>
+            <td>
+              <div class="flex gap-2">
+                <a href="#" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer cette actualité ?')">Supprimer</a>
+                <a href="#" class="btn btn-sm btn-info btn-outline">Modifier</a>
+                {% if article.isPublished %}
+                <a href="#" class="btn btn-sm btn-warning btn-outline">Masquer</a>
+                {% else %}
+                <a href="#" class="btn btn-sm btn-success btn-outline">Afficher</a>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% else %}
+            <tr><td colspan="3">Aucune actualité</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}
