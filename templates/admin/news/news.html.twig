@@ -43,12 +43,12 @@
             </td>
             <td>
               <div class="flex gap-2">
-                <a href="#" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer cette actualité ?')">Supprimer</a>
-                <a href="#" class="btn btn-sm btn-info btn-outline">Modifier</a>
+                <a href="{{ path('app_admin_deletenews', {id: article.id}) }}" class="btn btn-sm btn-error btn-outline" onclick="return confirm('Supprimer cette actualité ?')">Supprimer</a>
+                <a href="{{ path('app_admin_editnews', {id: article.id}) }}" class="btn btn-sm btn-info btn-outline">Modifier</a>
                 {% if article.isPublished %}
-                <a href="#" class="btn btn-sm btn-warning btn-outline">Masquer</a>
+                <a href="{{ path('app_admin_viewnews', {id: article.id}) }}" class="btn btn-sm btn-warning btn-outline">Masquer</a>
                 {% else %}
-                <a href="#" class="btn btn-sm btn-success btn-outline">Afficher</a>
+                <a href="{{ path('app_admin_viewnews', {id: article.id}) }}" class="btn btn-sm btn-success btn-outline">Afficher</a>
                 {% endif %}
               </div>
             </td>

@@ -53,7 +53,7 @@ class CourseType extends AbstractType
             ->add('imageFile', VichFileType::class, [
                 'label' => 'Image de la formation',
                 'required' => false,
-                'allow_delete' => true,
+                'allow_delete' => false,
                 'download_uri' => false,
             ])
             ->add('category', EntityType::class, [

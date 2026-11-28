@@ -25,7 +25,7 @@ class NewsType extends AbstractType
             ->add('imageFile', VichFileType::class, [
                 'label' => 'Image de l\'article',
                 'required' => false,
-                'allow_delete' => true,
+                'allow_delete' => false,
                 'download_uri' => false,
             ])
             ->add('isPublished', CheckboxType::class, [
